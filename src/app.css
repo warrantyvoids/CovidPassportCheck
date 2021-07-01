@@ -1,0 +1,146 @@
+:root,
+html,
+body,
+#root,
+.App {
+    padding: 0;
+    margin: 0;
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+:root {
+    font-family: 'Yanone Kaffeesatz', system-ui, sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+}
+
+header,
+h1,
+h2 {
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+h1 {
+    font-size: clamp(1.5rem, 4vw, 4rem);
+}
+
+.App {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+}
+
+main {
+    overflow: auto;
+    display: grid;
+    padding: 1em;
+    margin: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.App {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(29, 9, 121, 1) 35%, rgba(207, 140, 255, 1) 100%);
+    color: white;
+}
+
+.view--main main {
+    padding: 0;
+}
+
+.view--data main {
+    color: black;
+    background: white;
+}
+
+.view--error {
+    color: white;
+    background: rgb(170, 0, 0);
+    background: linear-gradient(90deg, rgba(170, 0, 0, 1) 0%, rgba(230, 53, 53, 1) 35%, rgba(211, 57, 153, 1) 100%);
+}
+
+p {
+    font-size: 1.5em;
+}
+
+.video,
+.video>section {
+    overflow: hidden;
+    display: grid;
+    padding: 0;
+    margin: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.video {
+    border-top: 0.25em solid white;
+}
+
+.video>section {
+    overflow: hidden;
+    position: relative;
+    max-width: auto !important;
+    padding-top: 0 !important;
+    max-height: 100vh;
+}
+
+.button {
+    font-family: inherit;
+    font-size: 2em;
+    padding: 0.25em 0.5em;
+    margin: 1em 0;
+    color: black;
+    background: white;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+}
+
+.button:focus-visible {
+    outline: 4px solid black;
+}
+
+.button:hover {
+    background-color: #fffd;
+}
+
+header .button {
+    margin: 0;
+}
+
+dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    margin: 0.25em 0 1em;
+}
+
+dt {
+    font-weight: 300;
+    margin: 0.25em;
+}
+
+dt::after {
+    content: ': ';
+}
+
+dd {
+    font-weight: 500;
+    margin: 0.25em;
+    padding: 0;
+}
