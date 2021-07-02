@@ -18,7 +18,7 @@ export const Results: React.FC<ResultsProps> = (props) => {
 
     const parsed = parse(data);
     const readable = makeReadable(parsed);
-    
+
     const [detailed, setDetailed] = React.useState<boolean>(false);
 
     const handleClick = () => {

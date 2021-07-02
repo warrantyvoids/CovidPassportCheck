@@ -1,4 +1,8 @@
 import { countries } from "../data/countries";
+import { targets } from "../data/targets";
+import { vaccineManufacturer } from "../data/vaccine/manufacturer";
+import { vaccineMedicinalProducts } from "../data/vaccine/medicinal-product";
+import { vaccineProphylaxes } from "../data/vaccine/prophylaxis";
 import { CovidCert } from "./types";
 
 export type ReadableCert = ReadableSection[];
@@ -14,6 +18,96 @@ export type ReadableData = {
     value: string;
     detailed?: boolean;
 }
+
+function readableDate(label: string, value: string): ReadableData[] {
+    return [
+        {
+            label,
+            value: (new Date(value)).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' }),
+            detailed: false
+        },
+        {
+            label,
+            value,
+            detailed: true
+        }
+    ];
+}
+
+function readableCountry(label: string, value: string): ReadableData[] {
+    return [
+        {
+            label,
+            value: countries(value),
+            detailed: false
+        },
+        {
+            label,
+            value: value,
+            detailed: true
+        },
+    ];
+};
+
+function readableTarget(label: string, value: string): ReadableData[] {
+    return [
+        {
+            label,
+            value: targets(value).display,
+            detailed: false
+        },
+        {
+            label,
+            value: value + ": " + targets(value).display,
+            detailed: true
+        },
+    ];
+};
+
+function readableVaccine(label: string, value: string): ReadableData[] {
+    return [
+        {
+            label,
+            value: vaccineProphylaxes(value).display,
+            detailed: false
+        },
+        {
+            label,
+            value: value + ": " + vaccineProphylaxes(value).display,
+            detailed: true
+        },
+    ];
+};
+
+function readableProduct(label: string, value: string): ReadableData[] {
+    return [
+        {
+            label,
+            value: vaccineMedicinalProducts(value).display,
+            detailed: false
+        },
+        {
+            label,
+            value: value + ": " + vaccineMedicinalProducts(value).display,
+            detailed: true
+        },
+    ];
+};
+
+function readableManufacturer(label: string, value: string): ReadableData[] {
+    return [
+        {
+            label,
+            value: vaccineManufacturer(value).display,
+            detailed: false
+        },
+        {
+            label,
+            value: value + ": " + vaccineManufacturer(value).display,
+            detailed: true
+        },
+    ];
+};
 
 export function makeReadable(cert: CovidCert): ReadableCert {
 
@@ -46,64 +140,27 @@ export function makeReadable(cert: CovidCert): ReadableCert {
             value: cert.nam.gnt,
             detailed: true
         },
-        {
-            label: "Date of birth",
-            value: (new Date(cert.dob)).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' }),
-            detailed: false
-        },
-        {
-            label: "Date of birth",
-            value: cert.dob,
-            detailed: true
-        }]
+        ...readableDate("Date of birth", cert.dob)
+        ]
     };
 
     const vacineInfo = cert.v.map((vc, i) => ({
         caption: `Vacine`,
         data: [
-            {
-                label: "Target",
-                value: vc.tg,
-            },
-            {
-                label: "Vacine",
-                value: vc.vp
-            },
-            {
-                label: "Product",
-                value: vc.mp
-            },
-            {
-                label: "Manufacturer",
-                value: vc.ma
-            },
+           ...readableTarget("Target", vc.tg),
+           ...readableVaccine("Vacine", vc.vp),
+           ...readableProduct("Product", vc.mp),
+           ...readableManufacturer("Manufacturer", vc.ma),
             {
                 label: "Doses",
                 value: vc.dn + ' of ' + vc.sd
             },
+            ...readableDate("Date of vacination", vc.dt),
+            ...readableCountry("Country", vc.co),
             {
-                label: "Date of vacination",
-                value: (new Date(vc.dt)).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' }),
-                detailed: false
-            },
-            {
-                label: "Date of vacination",
-                value: vc.dt,
+                label: "Certificate Issuer",
+                value: vc.is,
                 detailed: true
-            },
-            {
-                label: "Country",
-                value: countries(vc.co),
-                detailed: false
-            },
-            {
-                label: "Country",
-                value: vc.co,
-                detailed: true
-            },
-            {
-                label: "Issuer",
-                value: vc.is
             },
             {
                 label: "Certificate ID",
