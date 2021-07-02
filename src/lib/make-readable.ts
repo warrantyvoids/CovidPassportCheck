@@ -7,7 +7,6 @@ import { CovidCert } from "./types";
 
 import { Data as strings} from '../strings';
 import { testType } from "../data/test/type";
-import { string } from "yargs";
 import { testManufacturer } from "../data/test/manufacturer";
 import { testResult } from "../data/test/results";
 
@@ -26,6 +25,29 @@ export type ReadableData = {
 }
 
 function readableDate(label: string, value: string): ReadableData[] {
+    if (!value || !value.length || value.length === 4)
+    {
+        return [{
+            label,
+            value: ''
+        }];
+    }
+
+    if (value.length === 7) {
+        return [
+            {
+                label,
+                value: (new Date(value)).toLocaleDateString('en-GB', { year: 'numeric', month: 'long' }),
+                detailed: false
+            },
+            {
+                label,
+                value,
+                detailed: true
+            }
+        ];
+    }
+
     return [
         {
             label,
