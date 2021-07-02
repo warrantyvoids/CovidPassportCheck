@@ -33,6 +33,8 @@ export const Data = {
     Certificate: 'Certificate',
     CertificateIssuer: 'Certificate issued by',
     CertificateId: 'Certificate ID',
+    CertificateValidFrom: 'Valid from',
+    CertificateValidUntil: 'Valid until',
     Version: 'Version',
 
     PersonalInformation: "Personal Information",
@@ -60,7 +62,8 @@ export const Data = {
     TestCentre: 'Centre',
     TestCountry: 'country',
 
-    Recovery: 'Recovery'
+    Recovery: 'Recovery',
+    FirstPositiveResultDate: 'Date of first positive test result',
 };
 
 export const FAQ = {

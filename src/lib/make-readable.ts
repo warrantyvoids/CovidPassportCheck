@@ -203,6 +203,21 @@ export function makeReadable(cert: CovidCert): ReadableCert {
     const recoveryInfo = (cert.r || []).map((r, i) => ({
         caption: strings.Recovery,
         data: [
+            ...readableTarget(strings.Target, r.tg),
+            ...readableDate(strings.FirstPositiveResultDate, r.fr),
+            ...readableCountry(strings.TestCountry, r.co),
+            ...readableDate(strings.CertificateValidFrom, r.df),
+            ...readableDate(strings.CertificateValidUntil, r.du),
+            {
+                label: strings.CertificateIssuer,
+                value: r.is,
+                detailed: true
+            },
+            {
+                label: strings.CertificateId,
+                value: r.ci,
+                detailed: true
+            }            
         ]
     }));
 
