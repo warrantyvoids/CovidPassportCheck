@@ -1,0 +1,59 @@
+nav {
+    grid-area: nav;
+    color: white;
+    background: var(--c0);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    transform: translateX(-100vw);
+    transition: transform 300ms ease-out;
+    @media screen and (min-width: $menu-br) {
+        position: static;
+        width: 16em;
+        transform: translate(0);
+        transition: none;
+    }
+}
+
+.nav--open {
+    transform: translateX(0);
+    box-shadow: 0 0 1em black;
+}
+
+.nav__toggle {
+    margin: 1em;
+    align-self: start;
+    @media screen and (min-width: $menu-br) {
+        display: none;
+    }
+}
+
+nav {
+    ul {
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+    li {
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+    a {
+        color: white;
+        padding: 0.5em 0.5em;
+        display: block;
+        text-decoration: none;
+        &.a--active {
+            background: var(--c2);
+        }
+        &:hover {
+            background: var(--c1);
+        }
+        &:focus-visible {
+            outline: 2px solid white;
+            outline-offset: -2px;
+        }
+    }
+}

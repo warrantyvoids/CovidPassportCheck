@@ -1,0 +1,62 @@
+.button {
+    display: flex;
+    align-items: center;
+    padding: 0.25em 0.5em;
+    margin: 0;
+    border: none;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    text-decoration: none;
+    font: inherit;
+}
+
+.button__text,
+.button__icon {
+    padding: 0.25em;
+}
+
+.button--nav {
+    color: white;
+    background: var(--c1);
+    &:hover {
+        color: black;
+        background: white;
+    }
+    &:focus-visible {
+        outline: 2px solid white;
+        outline-offset: 2px;
+    }
+}
+
+.button--primary {
+    font-size: 1em;
+    color: white;
+    background: var(--c1);
+    &:hover {
+        background: var(--c2);
+    }
+    &:focus-visible {
+        outline: 2px solid var(--c1);
+        outline-offset: 2px;
+    }
+}
+
+.button--secondary {
+    font-size: 1em;
+    color: black;
+    background: #ddd;
+    &:hover {
+        color: white;
+        background: var(--c2);
+    }
+    &:focus-visible {
+        outline: 2px solid var(--c1);
+        outline-offset: 2px;
+    }
+}
+
+.button-set {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}

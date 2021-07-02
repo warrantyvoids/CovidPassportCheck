@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ReadableSection } from './lib/make-readable';
+import { ReadableSection } from '../../lib/make-readable';
 
 interface DataSectionProps {
     section: ReadableSection;

@@ -1,0 +1,78 @@
+:root,
+body,
+#root {
+    padding: 0;
+    margin: 0;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+:root {
+    --c0: blue;
+    --c1: darkblue;
+    --c2: #004;
+    --d1: darkred;
+    --d2: #400;
+    font-family: 'Open Sans', sans-serif;
+}
+
+main {
+    position: relative;
+}
+
+h1,
+h2 {
+    font-family: 'Arima Madurai', cursive;
+    font-weight: 300;
+    color: var(--c2);
+}
+
+$menu-br: 42rem;
+.video {
+    background: black;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 1em;
+}
+
+.video>section {
+    display: contents;
+}
+
+.video video {
+    object-fit: contain !important;
+    position: static;
+}
+
+dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    margin: 0.25em 0 1em;
+}
+
+dt {
+    font-weight: 300;
+    margin: 0.25em;
+}
+
+dt::after {
+    content: ': ';
+}
+
+dd {
+    font-weight: 500;
+    margin: 0.25em;
+    padding: 0;
+}
+
+@import 'button';
+@import 'layout';
+@import 'nav';
