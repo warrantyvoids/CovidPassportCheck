@@ -12,14 +12,14 @@ interface ScanProps {
 export const Scan: React.FC<ScanProps> = (props) => {
 
 	let [data, setData] = React.useState<string>("");
-	let [error, setError] = React.useState<{ message: string, type: 'error' | 'warning' }>(null);
+	let [error, setError] = React.useState<{ message: string[], type: 'error' | 'warning' }>(null);
 
 	if (data) {
 		return <Results data={data} rescan={() => setData("") } />;
 	}
 
 	const handleError = (err: string) => {
-		setError({ message: strings.NoWebcamAccess(window.location.host), type: 'error' });
+		setError({ message: strings.Errors.NoWebcamAccess(window.location.host), type: 'error' });
 	};
 
 	const handleScan = (result: string | null) => {
@@ -31,7 +31,7 @@ export const Scan: React.FC<ScanProps> = (props) => {
 			setData(result);
 		}
 		else {
-			throw "We don't support national QR codes, yet. Stay tuned!";
+			setError({ message: strings.Errors.NotRecognised, type: "warning"});
 		}
 	};
 

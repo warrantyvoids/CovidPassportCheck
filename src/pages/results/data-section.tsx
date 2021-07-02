@@ -27,7 +27,7 @@ export const DataSection: React.FC<DataSectionProps> = (props) => {
         <h2>{section.caption}</h2>
         <dl>{ data.map(d => <>
             <dt>{d.label}</dt>
-            <dd>{d.value}</dd>
+            <dd>{d.value || '—'}</dd>
         </>) }</dl>
     </section>;
 };

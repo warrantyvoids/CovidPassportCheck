@@ -5,10 +5,10 @@ export type CovidCert = {
     ver: string; // version
     dob: DateString; // date of birth
     nam: {
-        fn: string; // family name
+        fn?: string; // family name
         fnt: string; // family name (machine translatable)
-        gn: string; // given name
-        gnt: string; // given name (machine translatable)
+        gn?: string; // given name
+        gnt?: string; // given name (machine translatable)
     }
     v?: Vacination[];
     t?: Test[];

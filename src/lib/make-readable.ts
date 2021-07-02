@@ -5,6 +5,12 @@ import { vaccineMedicinalProducts } from "../data/vaccine/medicinal-product";
 import { vaccineProphylaxes } from "../data/vaccine/prophylaxis";
 import { CovidCert } from "./types";
 
+import { Data as strings} from '../strings';
+import { testType } from "../data/test/type";
+import { string } from "yargs";
+import { testManufacturer } from "../data/test/manufacturer";
+import { testResult } from "../data/test/results";
+
 export type ReadableCert = ReadableSection[];
 
 export type ReadableSection = {
@@ -49,61 +55,55 @@ function readableCountry(label: string, value: string): ReadableData[] {
     ];
 };
 
-function readableTarget(label: string, value: string): ReadableData[] {
+function readableDisplay(label: string, value: string, display: (value: string) => { display: string }): ReadableData[] {
     return [
         {
             label,
-            value: targets(value).display,
+            value: display(value).display,
             detailed: false
         },
         {
             label,
-            value: value + ": " + targets(value).display,
+            value: value + ": " + display(value).display,
             detailed: true
         },
     ];
+};
+
+function readableTarget(label: string, value: string): ReadableData[] {
+    return readableDisplay(label, value, targets);
 };
 
 function readableVaccine(label: string, value: string): ReadableData[] {
-    return [
-        {
-            label,
-            value: vaccineProphylaxes(value).display,
-            detailed: false
-        },
-        {
-            label,
-            value: value + ": " + vaccineProphylaxes(value).display,
-            detailed: true
-        },
-    ];
+    return readableDisplay(label, value, vaccineProphylaxes);
 };
 
 function readableProduct(label: string, value: string): ReadableData[] {
-    return [
-        {
-            label,
-            value: vaccineMedicinalProducts(value).display,
-            detailed: false
-        },
-        {
-            label,
-            value: value + ": " + vaccineMedicinalProducts(value).display,
-            detailed: true
-        },
-    ];
+    return readableDisplay(label, value, vaccineMedicinalProducts);
 };
 
 function readableManufacturer(label: string, value: string): ReadableData[] {
+    return readableDisplay(label, value, vaccineManufacturer);
+};
+
+function readableTestType(label: string, value: string): ReadableData[] {
+    return readableDisplay(label, value, testType);
+};
+
+function readableTestManufacturer(label: string, value: string): ReadableData[] {
+    return readableDisplay(label, value, testManufacturer);
+};
+
+function readableTestResult(label: string, value: string): ReadableData[] {
     return [
         {
             label,
-            value: vaccineManufacturer(value).display,
+            value: testResult(value).display === 'Detected' ? strings.TestResultPositive : strings.TestResultNegative,
             detailed: false
         },
         {
             label,
-            value: value + ": " + vaccineManufacturer(value).display,
+            value: value + ": " + testResult(value).display,
             detailed: true
         },
     ];
@@ -112,67 +112,99 @@ function readableManufacturer(label: string, value: string): ReadableData[] {
 export function makeReadable(cert: CovidCert): ReadableCert {
 
     const certificateInfo: ReadableSection = {
-        caption: "Certificate",
+        caption: strings.Certificate,
         data: [{
-            label: "Version",
+            label: strings.Version,
             value: cert.ver
         }],
         detailed: true
     };
 
     const personalInfo: ReadableSection = {
-        caption: "Personal Information",
+        caption: strings.PersonalInformation,
         data: [{
-            label: "Family name",
-            value: cert.nam.fn
+            label: strings.GivenName,
+            value: cert.nam.fn || cert.nam.fnt
         },
         {
-            label: "Given name",
-            value: cert.nam.gn
-        },
-        {
-            label: "Family name (machine readable)",
+            label: strings.FamilyName,
             value: cert.nam.fnt,
             detailed: true
         },
         {
-            label: "Given name (machine readable)",
+            label: strings.GivenNameMachineReadable,
+            value: cert.nam.gn || cert.nam.gnt
+        },
+        {
+            label: strings.FamilyNameMachineReadable,
             value: cert.nam.gnt,
             detailed: true
         },
-        ...readableDate("Date of birth", cert.dob)
+        ...readableDate(strings.DateOfBirth, cert.dob)
         ]
     };
 
-    const vacineInfo = cert.v.map((vc, i) => ({
-        caption: `Vacine`,
+    const vacineInfo = (cert.v || []).map((v, i) => ({
+        caption: strings.Vaccine,
         data: [
-           ...readableTarget("Target", vc.tg),
-           ...readableVaccine("Vacine", vc.vp),
-           ...readableProduct("Product", vc.mp),
-           ...readableManufacturer("Manufacturer", vc.ma),
+           ...readableTarget(strings.Target, v.tg),
+           ...readableVaccine(strings.Prophylaxis, v.vp),
+           ...readableProduct(strings.VaccineProduct, v.mp),
+           ...readableManufacturer(strings.VaccineManufacturer, v.ma),
             {
                 label: "Doses",
-                value: vc.dn + ' of ' + vc.sd
+                value: v.dn + ' of ' + v.sd
             },
-            ...readableDate("Date of vacination", vc.dt),
-            ...readableCountry("Country", vc.co),
+            ...readableDate("Date of vacination", v.dt),
+            ...readableCountry(strings.VaccineCountry, v.co),
             {
-                label: "Certificate Issuer",
-                value: vc.is,
+                label: strings.CertificateIssuer,
+                value: v.is,
                 detailed: true
             },
             {
-                label: "Certificate ID",
-                value: vc.ci,
+                label: strings.CertificateId,
+                value: v.ci,
                 detailed: true
             }
         ]
     }));
 
-    const testInfo = [];
+    const testInfo = (cert.t || []).map((t, i) => ({
+        caption: strings.Test,
+        data: [
+            ...readableTarget(strings.Target, t.tg),
+            ...readableTestType(strings.TestType, t.tt),
+            {
+                label: strings.TestName,
+                value: t.nm
+            },
+            ...readableTestManufacturer(strings.TestManufacturer, t.ma),
+            ...readableDate(strings.SampleCollectionDate, t.sc),
+            ...readableTestResult(strings.TestResult, t.tr),
+            {
+                label: strings.TestCentre,
+                value: t.tc
+            },
+            ...readableCountry(strings.TestCountry, t.co),
+            {
+                label: strings.CertificateIssuer,
+                value: t.is,
+                detailed: true
+            },
+            {
+                label: strings.CertificateId,
+                value: t.ci,
+                detailed: true
+            }
+        ]
+    }));
 
-    const recoveryInfo = [];
+    const recoveryInfo = (cert.r || []).map((r, i) => ({
+        caption: strings.Recovery,
+        data: [
+        ]
+    }));
 
     const result: ReadableCert = [personalInfo, ...vacineInfo, ...testInfo, ...recoveryInfo, certificateInfo];
     return result;
