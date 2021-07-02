@@ -1,5 +1,5 @@
 import { countries } from "../data/countries";
-import { CovidCert } from "./decoder";
+import { CovidCert } from "./types";
 
 export type ReadableCert = ReadableSection[];
 
