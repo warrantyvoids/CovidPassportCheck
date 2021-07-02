@@ -2,12 +2,15 @@ export const Errors = {
     NoWebcamAccess: (url: string) => [
         `${url} has been blocked from accessing your camera.`, 
         'We need to access your camera in order to scan QR codes.',
-        'To scan a QR code, grant access to your camera and then click the scan button.'
+        'To scan a QR code, grant access to your camera, make sure no other app is using the camera and then click the scan button.'
     ],
     NotRecognised: [
         'We don\'t recognise this QR code (yet) 😢',
         'Try scanning an international QR code.'
-    ]
+    ],
+    Generic: [
+        'Something went wrong.'
+    ],
 };
 
 export const Lead = `Scan a QR code to see the information in it.`;

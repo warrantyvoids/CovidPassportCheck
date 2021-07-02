@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Icon } from '../../icon';
 import { Layout } from '../../layout';
 
+import * as strings from '../../strings';
+
 interface ScanErrorProps {
     type: 'error' | 'warning' | 'info';
     message: string[];
@@ -11,7 +13,7 @@ interface ScanErrorProps {
 export const ScanError: React.FC<ScanErrorProps> = (props) => {
     const {
         type = 'error',
-        message = ["Something went wrong."],
+        message = strings.Errors.Generic,
         retry
     } = props;
 
@@ -20,7 +22,7 @@ export const ScanError: React.FC<ScanErrorProps> = (props) => {
             <Icon className={"icon--large icon--" + type} icon={type} /> 
         </div>
         <div style={{textAlign: 'center'}}>
-            { message.map(line => <p>{line}</p>) }
+            { message.map((line, index) => <p key={index}>{line}</p>) }
         </div>
         <div style={{display: 'flex', justifyContent: 'center', padding: '1em'}}>
             <button className="button button--primary button--hero" style={{justifySelf: 'center'}} onClick={retry}>
