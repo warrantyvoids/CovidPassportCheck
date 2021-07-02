@@ -1,6 +1,7 @@
 // @ts-ignore
 import { inflate } from "pako";
 import { decode as cbor_decode } from './cbor';
+import { CovidCert } from "./types";
 
 function base45euDecode(encoded: string) {
     const characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:";
