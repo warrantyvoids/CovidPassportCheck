@@ -59,7 +59,7 @@ export function makeReadable(cert: CovidCert): ReadableCert {
     };
 
     const vacineInfo = cert.v.map((vc, i) => ({
-        caption: `Vacine #${i + 1}`,
+        caption: `Vacine`,
         data: [
             {
                 label: "Target",
@@ -113,6 +113,10 @@ export function makeReadable(cert: CovidCert): ReadableCert {
         ]
     }));
 
-    const result: ReadableCert = [personalInfo, ...vacineInfo, certificateInfo];
+    const testInfo = [];
+
+    const recoveryInfo = [];
+
+    const result: ReadableCert = [personalInfo, ...vacineInfo, ...testInfo, ...recoveryInfo, certificateInfo];
     return result;
 };

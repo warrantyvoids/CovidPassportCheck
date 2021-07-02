@@ -1,13 +1,14 @@
 nav {
     grid-area: nav;
     color: white;
-    background: var(--c0);
+    background: var(--c1);
     position: absolute;
     top: 0;
     bottom: 0;
     width: 100vw;
     transform: translateX(-100vw);
     transition: transform 300ms ease-out;
+    z-index: 1;
     @media screen and (min-width: $menu-br) {
         position: static;
         width: 16em;
@@ -30,30 +31,37 @@ nav {
 }
 
 nav {
+    display: flex;
+    flex-direction: column;
     ul {
-        display: block;
-        padding: 0;
-        margin: 0;
+        display: contents;
     }
     li {
         display: block;
         padding: 0;
         margin: 0;
     }
+    .li--space {
+        margin-block-start: auto;
+    }
     a {
         color: white;
+        background: var(--c1);
         padding: 0.5em 0.5em;
         display: block;
         text-decoration: none;
-        &.a--active {
-            background: var(--c2);
-        }
         &:hover {
-            background: var(--c1);
+            color: white;
+            background: var(--c2);
         }
         &:focus-visible {
             outline: 2px solid white;
-            outline-offset: -2px;
+            outline-offset: -4px;
+        }
+        &.a--active {
+            color: var(--c2);
+            background: var(--w);
+            outline-color: var(--c2);
         }
     }
 }
