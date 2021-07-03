@@ -15,6 +15,17 @@ export type CovidCert = {
     r?: Recovery[];
 };
 
+export type NL2CovidCert = {
+    isSpecimen: number;
+    isPaperProof: number;
+    validFrom: DateString;
+    validForHours: number;
+    firstNameInitial?: string;
+    lastNameInitial?: string;
+    birthDay: number;
+    birthMonth: number;
+}
+
 export interface Vacination {
     tg: string; // Target
     vp: string; // Vacine
