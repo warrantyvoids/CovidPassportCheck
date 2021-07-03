@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ScanError } from '../scan/scan-error';
 import { HC1Results } from './hc1';
 import { NL2Results } from './nl2';
 
@@ -21,8 +22,7 @@ export const Results: React.FC<ResultsProps> = (props) => {
             return <NL2Results data={data} rescan={rescan} />;
 
         default:
-            console.log("FIxe me");
-            throw "fix me";
+            return null;
     }
 };
 

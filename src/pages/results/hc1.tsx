@@ -41,7 +41,7 @@ export const HC1Results: React.FC<ResultsProps> = (props) => {
             : <div className="button-set">
                 <button className="button button--primary" onClick={() => { rescan(); }}>
                     <Icon className="button__icon" icon='qr' />
-                    <span className="button__text">Scan another QR code</span>
+                    <span className="button__text">{ strings.ScanAnother }</span>
                 </button>
                 <button aria-pressed={detailed} className="button button--secondary" onClick={handleClick}>
                     <Icon className="button__icon" icon={detailed ? 'less' : 'more'} />

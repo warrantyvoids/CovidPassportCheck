@@ -8,39 +8,41 @@ import { ResultsProps } from '.';
 import { parseNl2 } from '../../lib/decoder';
 import { ReadableCert, readableDate } from '../../lib/make-readable';
 
+import { NL2 as strings, ScanAnother } from '../../strings';
+
 const makeReadable = (data) => {
     const parsed = parseNl2(data);
     const result: ReadableCert = [{
             caption: "Dutch QR code",
             data: [
                 {
-                    label: "First name initial",
+                    label: strings.FirstNameInitial,
                     value: parsed.firstNameInitial
                 },
                 {
-                    label: "Last name initial",
+                    label: strings.LastNameInitial,
                     value: parsed.lastNameInitial
                 },
                 {
-                    label: "Birth month",
+                    label: strings.BirthMonth,
                     value: parsed.birthMonth.toString()
                 },
                 {
-                    label: "Birth day",
+                    label: strings.BirthDay,
                     value: parsed.birthDay.toString()
                 },
                 {
-                    label: "Valid for hours",
-                    value: parsed.validForHours.toString()
+                    label: strings.ValidFor,
+                    value: parsed.validForHours.toString() + " " + strings.Hours
                 },
-                ...readableDate("Valid from", parsed.validFrom),
+                ...readableDate(strings.ValidFrom, parsed.validFrom),
                 {
-                    label: "Is paperproof",
-                    value: parsed.isPaperProof ? 'Yes' : 'No',
+                    label: strings.IsPaperproof,
+                    value: parsed.isPaperProof ? strings.Yes : strings.No
                 },
                 {
-                    label: "Is specimen",
-                    value: parsed.isSpecimen ? 'Yes' : 'No',
+                    label: strings.IsSpecimen,
+                    value: parsed.isSpecimen ? strings.Yes : strings.No,
                 }
             ]
         }
@@ -59,7 +61,7 @@ export const NL2Results: React.FC<ResultsProps> = (props) => {
         <div className="button-set">
                 <button className="button button--primary" onClick={() => { rescan(); }}>
                     <Icon className="button__icon" icon='qr' />
-                    <span className="button__text">Scan another QR code</span>
+                    <span className="button__text">{ScanAnother}</span>
                 </button>
         </div> 
 
