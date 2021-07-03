@@ -15,6 +15,7 @@ export const Errors = {
     ],
 };
 
+export const Scan = 'Scan QR Code';
 export const ScanAnother = 'Scan another QR code';
 export const Back = 'Back';
 
@@ -79,6 +80,7 @@ export const Data = {
 };
 
 export const NL2 = {
+    Caption: "Dutch QR code",
     FirstNameInitial: "First name initial",
     LastNameInitial: "Last name initial",
     BirthMonth: "Birth month",
@@ -109,7 +111,7 @@ export const Layout = {
     HideMenu: 'Hide menu',
     Home: 'Home',
     Scan: 'Scan',
-    FAQ: 'FAQ',
+    FAQ: 'How does it work?',
     Privacy: 'Privacy',
     Cookies: 'Cookies'
 };

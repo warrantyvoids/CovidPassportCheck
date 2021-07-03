@@ -13,7 +13,7 @@ import { NL2 as strings, ScanAnother } from '../../strings';
 const makeReadable = (data) => {
     const parsed = parseNl2(data);
     const result: ReadableCert = [{
-            caption: "Dutch QR code",
+            caption: strings.Caption,
             data: [
                 {
                     label: strings.FirstNameInitial,

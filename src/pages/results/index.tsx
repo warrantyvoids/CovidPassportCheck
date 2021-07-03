@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ScanError } from '../scan/scan-error';
 import { HC1Results } from './hc1';
 import { NL2Results } from './nl2';
 
