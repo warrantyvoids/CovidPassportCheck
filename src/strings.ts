@@ -6,7 +6,7 @@ export const Errors = {
     ],
     NotRecognised: [
         'We don\'t recognise this QR code (yet) 😢',
-        'Try scanning an international QR code.'
+        'Try scanning an international or a Dutch QR code.'
     ],
     Generic: [
         'Something went wrong.'
