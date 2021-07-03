@@ -23,6 +23,7 @@ export const Results: React.FC<ResultsProps> = (props) => {
     const readable = makeReadable(parsed);
 
     const [detailed, setDetailed] = React.useState<boolean>(false);
+    const [raw, setRaw] = React.useState<boolean>(false);
     const [results, setResults] = React.useState<string | null>(null);
 
     const handleClick = () => {
@@ -31,12 +32,12 @@ export const Results: React.FC<ResultsProps> = (props) => {
 
     React.useEffect(() => {
         window.document.querySelector('main').scrollTop = 0;
-    }, [results]);
+    }, [results, raw]);
 
     return <Layout>
-        { results 
+        { results || raw
             ? <div className="button-set">
-                <button className="button button--secondary" onClick={() => { setResults(null) }}>
+                <button className="button button--secondary" onClick={() => { setResults(null); setRaw(false); }}>
                     <Icon className="button__icon" icon='back' />
                     <span className="button__text">{strings.Back}</span>
                 </button>
@@ -50,12 +51,22 @@ export const Results: React.FC<ResultsProps> = (props) => {
                     <Icon className="button__icon" icon={detailed ? 'less' : 'more'} />
                     <span className="button__text">{detailed ? strings.LessDetails : strings.MoreDetails}</span>
                 </button>
+                <button className="button button--secondary" onClick={() => { setRaw(true) }}>
+                    <Icon className="button__icon" icon='raw' />
+                    <span className="button__text">{ strings.RawData }</span>
+                </button>
             </div> 
         }
-        
-        { !results && readable.map(section => <DataSection detailed={detailed} section={section} />) }
 
-        <ValidateCert data={parsed} results={results} setResults={(r) => {setResults(r); }} />
+        { raw 
+            ? <>
+                <h2>{ strings.RawData }</h2>
+                <pre>{JSON.stringify(parsed, undefined, 4)}</pre> 
+            </>
+            : <>{ !results && readable.map(section => <DataSection detailed={detailed} section={section} />) }
+                <ValidateCert data={parsed} results={results} setResults={(r) => {setResults(r); }} />
+            </>
+        }
     </Layout>;
 };
 

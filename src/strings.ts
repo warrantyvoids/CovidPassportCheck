@@ -17,6 +17,7 @@ export const Back = 'Back';
 
 export const MoreDetails = 'More details';
 export const LessDetails = 'Less details';
+export const RawData = 'Raw data';
 
 export const Lead = `Scan a QR code to see the information in it.`;
 
