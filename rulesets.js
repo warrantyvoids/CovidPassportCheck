@@ -1,13 +1,13 @@
 const https = require('https');
 const fs = require('fs');
 
-const url = 'https://github.com/ehn-dcc-development/dgc-business-rules/tree/main/rulesets';
+const url = 'https://raw.githubusercontent.com/ehn-dcc-development/dgc-business-rules/main/rulesets/';
 const folder = 'src/rulesets/';
 
 const countries = {
-    'EU': '/EU/template-ruleset.json',
-    'NL': '/NL/NL-specific-ruleset.json',
-    'FI': '/FI/FI-specific-ruleset.json'
+    'EU': 'EU/template-ruleset.json',
+    'NL': 'NL/NL-specific-ruleset.json',
+    'FI': 'FI/FI-specific-ruleset.json'
 };
 
 const download = (from, to) => {

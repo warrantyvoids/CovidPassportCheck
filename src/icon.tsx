@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import './icon.scss';
 
-type icons = 'error' | 'warning' | 'info' | 'menu' | 'qr' | 'cevron-left' | 'more' | 'less';
+type icons = 'error' | 'warning' | 'info' | 'back' | 'menu' | 'qr' | 'cevron-left' | 'more' | 'less' | 'details' | 'valid' | 'invalid';
 
 interface IconProps {
     className?: string;
@@ -69,6 +69,22 @@ const S: React.FC<{ icon: icons }> = (props) => {
 
         case 'less': return <>
             <path d="M8.12 19.3c.39.39 1.02.39 1.41 0L12 16.83l2.47 2.47c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41l-3.17-3.17c-.39-.39-1.02-.39-1.41 0l-3.17 3.17c-.4.38-.4 1.02-.01 1.41zm7.76-14.6c-.39-.39-1.02-.39-1.41 0L12 7.17 9.53 4.7c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.03 0 1.42l3.17 3.17c.39.39 1.02.39 1.41 0l3.17-3.17c.4-.39.4-1.03.01-1.42z"/>
+        </>;
+
+        case 'back': return <>
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </>;
+
+        case 'details': return <>
+            <path d="M16.54,11L13,7.46l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L16.54,11z M11,7H2v2h9V7z M21,13.41L19.59,12L17,14.59 L14.41,12L13,13.41L15.59,16L13,18.59L14.41,20L17,17.41L19.59,20L21,18.59L18.41,16L21,13.41z M11,15H2v2h9V15z"/>
+        </>;
+
+        case 'valid': return <>
+            <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+        </>;
+
+        case 'invalid': return <>
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
         </>;
     }
 };

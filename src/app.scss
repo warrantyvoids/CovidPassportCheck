@@ -24,6 +24,7 @@ body,
 
 main {
     position: relative;
+    overflow: auto;
 }
 
 h1,
@@ -74,6 +75,11 @@ dd {
     padding: 0;
 }
 
+th {
+    text-align: left;
+}
+
 @import 'button';
 @import 'layout';
 @import 'nav';
+@import 'alert';

@@ -13,6 +13,11 @@ export const Errors = {
     ],
 };
 
+export const Back = 'Back';
+
+export const MoreDetails = 'More details';
+export const LessDetails = 'Less details';
+
 export const Lead = `Scan a QR code to see the information in it.`;
 
 export const MissingData = '—';
@@ -71,4 +76,12 @@ export const Data = {
 
 export const FAQ = {
     
+};
+
+export const Validation = {
+    OtherEuCountries: 'Other EU countries',
+    Validity: 'Validity',
+    Valid: 'Valid',
+    Invalid: 'Invalid',
+    Details: 'Result details'
 };
