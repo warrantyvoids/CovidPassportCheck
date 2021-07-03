@@ -20,7 +20,7 @@ export const Home: React.FC<HomeProps> = (props) => {
             <Link to='/scan' className="button button--primary button--hero" style={{justifySelf: 'center'}}>
                 <Icon className="button__icon" icon='qr' />
                 <span className="button__text">
-                    Scan QR Code
+                    { strings.Scan }
                 </span>
             </Link>
         </div>

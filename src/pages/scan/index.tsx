@@ -27,7 +27,7 @@ export const Scan: React.FC<ScanProps> = (props) => {
 			return;
 		}
 
-		if (result.length && result.startsWith("HC1:")) {
+		if (result.length && result.charAt(3) === ":") {
 			setData(result);
 		}
 		else {

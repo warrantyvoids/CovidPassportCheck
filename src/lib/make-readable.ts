@@ -24,7 +24,7 @@ export type ReadableData = {
     detailed?: boolean;
 }
 
-function readableDate(label: string, value: string): ReadableData[] {
+export function readableDate(label: string, value: string): ReadableData[] {
     if (!value || !value.length || value.length === 4)
     {
         return [{

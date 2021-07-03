@@ -1,7 +1,7 @@
 // @ts-ignore
 import { inflate } from "pako";
 import { decode as cbor_decode } from './cbor';
-import {CovidCert, NL2CovidCert} from "./types";
+import { CovidCert, NL2CovidCert } from "./types";
 import * as asn1js from "asn1js";
 
 function base45euDecode(encoded: string) {
@@ -62,7 +62,7 @@ function base45nlDecode(encoded: string) {
     return result;
 }
 
-export function parse(qrCode: string): CovidCert | any {
+export function parse(qrCode: string): CovidCert | NL2CovidCert {
     if (qrCode.startsWith("HC1:")) {
         return parseInternational(qrCode);
     } else if (qrCode.startsWith("NL2:")) {
@@ -102,7 +102,7 @@ export function parseNl2(qrCode: string): NL2CovidCert {
     const aDisclosedSplit = {
         isSpecimen: Number(convert(topLevel.ADisclosed.valueBlock.value[1].valueBlock)),
         isPaperProof: Number(convert(topLevel.ADisclosed.valueBlock.value[2].valueBlock)),
-        validFrom: new Date(Number(convert(topLevel.ADisclosed.valueBlock.value[3].valueBlock))).toISOString(),
+        validFrom: new Date(Number(convert(topLevel.ADisclosed.valueBlock.value[3].valueBlock)) * 1000).toISOString(),
         validForHours: Number(convert(topLevel.ADisclosed.valueBlock.value[4].valueBlock)),
         firstNameInitial: convert(topLevel.ADisclosed.valueBlock.value[5].valueBlock),
         lastNameInitial: convert(topLevel.ADisclosed.valueBlock.value[6].valueBlock),

@@ -1,3 +1,5 @@
+export const App = 'Covid Check'
+
 export const Errors = {
     NoWebcamAccess: (url: string) => [
         `${url} has been blocked from accessing your camera.`, 
@@ -13,6 +15,8 @@ export const Errors = {
     ],
 };
 
+export const Scan = 'Scan QR Code';
+export const ScanAnother = 'Scan another QR code';
 export const Back = 'Back';
 
 export const MoreDetails = 'More details';
@@ -109,10 +113,35 @@ export const TechnicalInformation = {
         ' if somebody is allowed entry without giving any medical information.'
 }
 
+export const NL2 = {
+    Caption: "Dutch QR code",
+    FirstNameInitial: "First name initial",
+    LastNameInitial: "Last name initial",
+    BirthMonth: "Birth month",
+    BirthDay: "Birth day",
+    ValidFor: "Valid for",
+    Hours: 'hours',
+    ValidFrom: 'Valid from',
+    IsPaperproof: 'Is paperproof',
+    IsSpecimen: 'Is specimen',
+    Yes: 'Yes',
+    No: 'No'
+};
+
 export const Validation = {
     OtherEuCountries: 'Other EU countries',
     Validity: 'Validity',
     Valid: 'Valid',
     Invalid: 'Invalid',
     Details: 'Result details'
+};
+
+export const Layout = {
+    ShowMenu: 'Show menu',
+    HideMenu: 'Hide menu',
+    Home: 'Home',
+    Scan: 'Scan',
+    FAQ: 'How does it work?',
+    Privacy: 'Privacy',
+    Cookies: 'Cookies'
 };
