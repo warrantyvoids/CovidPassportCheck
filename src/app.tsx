@@ -8,6 +8,7 @@ import { Privacy } from './pages/privacy';
 import { Cookies } from './pages/cookies';
 import { Home } from './pages/home';
 import { FAQ } from './pages/faq';
+import { TechnicalInformation } from './pages/technical-information';
 
 const App = () => {
 	return <BrowserRouter>
@@ -16,6 +17,7 @@ const App = () => {
 			<Route path="/scan/error" component={ScanError} />
 			<Route path="/scan" component={Scan} />
 			<Route path="/faq" component={FAQ} />
+			<Route path="/technical-information" component={TechnicalInformation} />
 			<Route path="/privacy" component={Privacy} />
 			<Route path="/cookies" component={Cookies} />
 		</Switch>

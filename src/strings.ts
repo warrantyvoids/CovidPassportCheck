@@ -42,6 +42,20 @@ export const Privacy = {
     ]
 };
 
+export const TechnicalInformation = {
+    Heading: 'Technical Information',
+    Text: [
+        'We currently support two families of certificates: HC1 certificates and NL2 certificates. Although' +
+'both are QR codes which can be scanned to retrieve information, they serve different purposes and contain different' +
+' information in different formats.',
+    'HC1 encoded certificates are EU-wide and contain quite some information. Their intent is to answer the question: ' +
+'"Is this person vaccinated, tested or recovered", with a focus on exchanging this information.',
+    'NL2 encoded certificates are specifically Dutch certificates, intended for use in the Netherlands by people residing' +
+'in the Netherlands. This information is meant for Dutch festivals, organisations and companies, in order to check' +
+' if somebody is allowed entry without giving any medical information.'
+    ]
+};
+
 export const Data = {
     Certificate: 'Certificate',
     CertificateIssuer: 'Certificate issued by',
@@ -81,37 +95,26 @@ export const Data = {
 
 export const FAQ = [
     {
-        Q: 'Why did you make this site?',
-        A: 'We were very curious what was actually in the QR codes of our government. We know the codes are' +
+        q: 'Why did you make this site?',
+        a: 'We were very curious what was actually in the QR codes of our government. We know the codes are' +
             ' both internationally used and a domestic version exists, and wanted to see if we can verify that no personal ' +
             'information was leaked.'
     },
     {
-        Q: 'Can I use this site to check corona certificates/passports?',
-        A: 'NO! We do not validate the certificates, as we do not posses them. This means that an attacker' +
+        q: 'Can I use this site to check corona certificates/passports?',
+        a: 'NO! We do not validate the certificates, as we do not posses them. This means that an attacker' +
             'could make their own certificates, and we would never know this',
     },
     {
-        Q: 'Can I help?',
-        A: 'We are currently looking for more test cases, bug reports and if possible, an up to date endpoint ' +
+        q: 'Can I help?',
+        a: 'We are currently looking for more test cases, bug reports and if possible, an up to date endpoint ' +
             'containing both the certificates and rules.',
     },
     {
-        Q: 'Is this site open source?',
-        A: 'Yes! The site is released as a BSD 3 clause and can be found on github: https://github.com/warrantyvoids/CovidPassportCheck',
+        q: 'Is this site open source?',
+        a: 'Yes! The site is released as a BSD 3 clause and can be found on github: https://github.com/warrantyvoids/CovidPassportCheck',
     }
 ];
-
-export const TechnicalInformation = {
-    HowDoesThisWork: 'We currently support two families of certificates: HC1 certificates and NL2 certificates. Although' +
-        'both are QR codes which can be scanned to retrieve information, they serve different purposes and contain different' +
-        ' information in different formats.',
-    HC1: 'HC1 encoded certificates are EU-wide and contain quite some information. Their intent is to answer the question: ' +
-        '"Is this person vaccinated, tested or recovered", with a focus on exchanging this information.',
-    NL2: 'NL2 encoded certificates are specifically Dutch certificates, intended for use in the Netherlands by people residing' +
-        'in the Netherlands. This information is meant for Dutch festivals, organisations and companies, in order to check' +
-        ' if somebody is allowed entry without giving any medical information.'
-}
 
 export const NL2 = {
     Caption: "Dutch QR code",
@@ -141,7 +144,8 @@ export const Layout = {
     HideMenu: 'Hide menu',
     Home: 'Home',
     Scan: 'Scan',
-    FAQ: 'How does it work?',
+    FAQ: 'FAQ',
+    TechnicalInformation: 'Technical information',
     Privacy: 'Privacy',
     Cookies: 'Cookies'
 };
