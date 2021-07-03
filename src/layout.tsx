@@ -28,6 +28,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
                 <li><NavLink activeClassName="a--active" exact to="/">{ strings.Layout.Home }</NavLink></li>
                 <li><NavLink activeClassName="a--active" to="/scan">{ strings.Layout.Scan }</NavLink></li>
                 <li><NavLink activeClassName="a--active" to="/faq">{ strings.Layout.FAQ }</NavLink></li>
+                <li><NavLink activeClassName="a--active" to="/technical-information">{ strings.Layout.TechnicalInformation }</NavLink></li>
                 <li className="li--space"><NavLink activeClassName="a--active" to="/privacy">{ strings.Layout.Privacy }</NavLink></li>
                 <li><NavLink activeClassName="a--active" to="/cookies">{ strings.Layout.Cookies }</NavLink></li>
             </ul>

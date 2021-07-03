@@ -42,6 +42,13 @@ export const Privacy = {
     ]
 };
 
+export const TechnicalInformation = {
+    Heading: 'Technical information',
+    Text: [
+        
+    ]
+};
+
 export const Data = {
     Certificate: 'Certificate',
     CertificateIssuer: 'Certificate issued by',
@@ -94,9 +101,9 @@ export const NL2 = {
     No: 'No'
 };
 
-export const FAQ = {
-    
-};
+export const FAQ: { q: string, a: string }[] = [
+
+];
 
 export const Validation = {
     OtherEuCountries: 'Other EU countries',
@@ -112,6 +119,7 @@ export const Layout = {
     Home: 'Home',
     Scan: 'Scan',
     FAQ: 'How does it work?',
+    TechnicalInformation: 'Technical information',
     Privacy: 'Privacy',
     Cookies: 'Cookies'
 };
