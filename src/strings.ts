@@ -2,7 +2,7 @@ export const App = 'Covid Check'
 
 export const Errors = {
     NoWebcamAccess: (url: string) => [
-        `${url} has been blocked from accessing your camera.`, 
+        `${url} has been blocked from accessing your camera.`,
         'We need to access your camera in order to scan QR codes.',
         'To scan a QR code, grant access to your camera, make sure no other app is using the camera and then click the scan button.'
     ],
@@ -45,14 +45,14 @@ export const Privacy = {
 export const TechnicalInformation = {
     Heading: 'Technical Information',
     Text: [
-        'We currently support two families of certificates: HC1 certificates and NL2 certificates. Although' +
-'both are QR codes which can be scanned to retrieve information, they serve different purposes and contain different' +
-' information in different formats.',
-    'HC1 encoded certificates are EU-wide and contain quite some information. Their intent is to answer the question: ' +
-'"Is this person vaccinated, tested or recovered", with a focus on exchanging this information.',
-    'NL2 encoded certificates are specifically Dutch certificates, intended for use in the Netherlands by people residing' +
-'in the Netherlands. This information is meant for Dutch festivals, organisations and companies, in order to check' +
-' if somebody is allowed entry without giving any medical information.'
+        'We currently support two families of codes: HC1 and NL2. Although' +
+        'both are QR codes which can be scanned to retrieve information, they serve different purposes and contain different' +
+        ' information in different formats.',
+        'HC1 codes are used EU-wide and contain quite some information. Their intent is to answer the question: ' +
+        '"Is this person vaccinated, tested or recovered?", with a focus on exchanging this information.',
+        'NL2 codes are specifically Dutch codes, intended for use in the Netherlands by people residing' +
+        'in the Netherlands. This information is meant for Dutch festivals, organisations and companies, in order to check' +
+        ' if somebody is allowed entry without leaking any medical or personal information.'
     ]
 };
 
@@ -102,8 +102,10 @@ export const FAQ = [
     },
     {
         q: 'Can I use this site to check corona certificates/passports?',
-        a: 'NO! We do not validate the certificates, as we do not posses them. This means that an attacker' +
-            'could make their own certificates, and we would never know this',
+        a: ['NO! We do not validate the certificates, as we do not posses them. This means that an attacker' +
+            'could make their own certificates, and we would never notice they are fake.',
+            'Furthermore, we show all information, including medical and personal information we can find in the code, so make sure you have permission from the owner of the code to view this information.'
+        ],
     },
     {
         q: 'Can I help?',
@@ -112,7 +114,8 @@ export const FAQ = [
     },
     {
         q: 'Is this site open source?',
-        a: 'Yes! The site is released as a BSD 3 clause and can be found on github: https://github.com/warrantyvoids/CovidPassportCheck',
+        a: 'Yes! The site is released as a BSD 3 clause and can be found on github.',
+        l: 'https://github.com/warrantyvoids/CovidPassportCheck',
     }
 ];
 

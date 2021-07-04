@@ -14,7 +14,7 @@ export const Home: React.FC<HomeProps> = (props) => {
              <Icon className="icon--large" icon='qr' />
         </div>
         <div style={{textAlign: 'center'}}>
-            { strings.Lead.split("\n").map(line => <p>{line}</p>) }
+            { strings.Lead.split("\n").map((line, i) => <p key={i}>{line}</p>) }
         </div>
         <div style={{display: 'flex', justifyContent: 'center', padding: '1em'}}>
             <Link to='/scan' className="button button--primary button--hero" style={{justifySelf: 'center'}}>

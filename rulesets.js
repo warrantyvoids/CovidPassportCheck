@@ -11,7 +11,7 @@ const countries = {
 };
 
 const download = (from, to) => {
-    return new Promise((resolve, reject) => {;
+    return new Promise((resolve, reject) => {
         https.get(from, (res) => {
             const stream = fs.createWriteStream(to);
             stream.on('finish', () => {
@@ -29,6 +29,8 @@ const update = async() => {
 
     const ps = Object.entries(countries).map(([country, path]) => download(url + path, folder + country + '.json'));
     await Promise.allSettled(ps);
+
+    await fs.promises.writeFile(folder + 'update.json', JSON.stringify({ update: new Date().toISOString()})); 
 };
 
 update().then(

@@ -34,6 +34,8 @@ const update = async() => {
 
     const ps = files.map(f => download(url, folder, f));
     await Promise.allSettled(ps);
+
+    await fs.promises.writeFile(folder + 'update.json', JSON.stringify({ update: new Date().toISOString()})); 
 };
 
 update().then(
